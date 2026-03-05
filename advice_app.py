@@ -1,12 +1,13 @@
 import os
 import streamlit as st
+from dotenv import load_dotenv
+load_dotenv()
 from openai import OpenAI
+api_key = os.environ.get("OPENAI_API_KEY")
 
 # 簡単な Streamlit アプリ: ユーザーから相談内容を受け取り、OpenAI のチャット補完で
 # 健康に関するアドバイスを取得して表示します。
 
-# 環境変数から API キーを安全に取得します。見つからない場合はエラーメッセージを表示して停止します。
-api_key = os.environ.get("OPENAI_API_KEY")
 if not api_key:
     st.title("ザ・アドバイザーアプリ")
     st.error("環境変数 OPENAI_API_KEY が設定されていません。アプリを実行する前に設定してください。")
